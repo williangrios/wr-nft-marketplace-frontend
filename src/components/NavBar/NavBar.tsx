@@ -13,7 +13,7 @@ import { CgMenuLeft, CgMenuRight } from 'react-icons/cg'
 import Button from '../Button/Button'
 import images from '../../img/index'
 
-function NavBar() {
+function NavBar () {
     const [discover, setDiscover] = useState(false)
     const [help, setHelp] = useState(false)
     const [notification, setNotification] = useState(false)
@@ -71,22 +71,21 @@ function NavBar() {
     }
 
     return (
-        <div className="">
-            <div className="">
-                <div className="">
+        <div className="w-full relative bg-green-50 z-50 py-6">
+            <div className="w-[80%] m-auto flex items-center bg-red-100 justify-between">
+                <div className="flex items-center w-[50%] justify-around bg-yellow-300">
                     <div className="">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={images.logo} alt='WR NFT Marketplace' width={100} height={100} />
+                        <Image src={images.logo} alt='WR NFT Marketplace' width={75} height={75} />
                     </div>
                     <div className="">
-                        <div className="">
-                            <input type="text" className="" placeholder='Search NFT' />
+                        <div className="flex items-center justify-center gap-2 border border-black rounded-full py-2 px-3">
+                            <input type="text" className="px-3 py-1" placeholder='Search NFT' />
                             <BsSearch onClick={() => { }} className="" />
-
                         </div>
                     </div>
                 </div>
-                <div className="">
+                <div className="flex items-center w-[50%] justify-around bg-yellow-600">
                     <div className="">
                         <p className="" onClick={(e) => { openMenu(e) }}>Discover</p>
                         {discover &&
