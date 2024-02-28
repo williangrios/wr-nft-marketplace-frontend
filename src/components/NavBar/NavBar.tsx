@@ -53,13 +53,13 @@ function NavBar () {
     const openMenu = (e: any) => {
         const btnText = e.target.innerText;
         if (btnText == "Discover") {
-            setDiscover(true)
+            setDiscover((prev) => !prev)
             setHelp(false)
             setNotification(false)
             setProfile(false)
         } else if (btnText == "Help Center") {
+            setHelp((prev) => !prev)
             setDiscover(false)
-            setHelp(true)
             setNotification(false)
             setProfile(false)
         } else {
@@ -71,54 +71,56 @@ function NavBar () {
     }
 
     return (
-        <div className="w-full relative bg-green-50 z-50 py-6">
-            <div className="w-[80%] m-auto flex items-center bg-red-100 justify-between">
-                <div className="flex items-center w-[50%] justify-around bg-yellow-300">
+        <div className="w-full relative z-50 py-6">
+            <div className="w-[100%] lg:w-[80%] m-auto flex items-center justify-between">
+                <div className="flex items-center w-[50%] justify-around ">
                     <div className="">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <Image src={images.logo} alt='WR NFT Marketplace' width={75} height={75} />
                     </div>
                     <div className="">
-                        <div className="flex items-center justify-center gap-2 border border-black rounded-full py-2 px-3">
-                            <input type="text" className="px-3 py-1" placeholder='Search NFT' />
+                        <div className="hidden lg:flex items-center justify-center gap-2 border border-black rounded-full py-2 px-3">
+                            <input type="text" className="px-3 py-1 outline-none" placeholder='Search NFT' />
                             <BsSearch onClick={() => { }} className="" />
                         </div>
                     </div>
                 </div>
-                <div className="flex items-center w-[50%] justify-around bg-yellow-600">
-                    <div className="">
-                        <p className="" onClick={(e) => { openMenu(e) }}>Discover</p>
+                <div className="flex items-center w-[50%] justify-end lg:justify-around gap-4 lg:gap-0">
+                    <div className="hidden lg:flex lg:flex-col">
+                        <p className="cursor-pointer" onClick={(e) => { openMenu(e) }}>Discover</p>
                         {discover &&
-                            <div className="">
+                            <div className="absolute z-10 mt-8 flex flex-col bg-gray-200 shadow-right-bottom rounded-xl p-3">
                                 <Discover />
                             </div>
                         }
                     </div>
-                    <div className="">
-                        <p className="" onClick={(e) => { openMenu(e) }}>Help Center</p>
+                    <div className="hidden lg:flex lg:flex-col">
+                        <p className="cursor-pointer" onClick={(e) => { openMenu(e) }}>Help Center</p>
                         {help &&
-                            <div className="">
+                            <div className="absolute z-10 mt-8 flex flex-col bg-gray-300 rounded-xl p-3 shadow-right-bottom">
                                 <HelpCenter />
                             </div>
                         }
                     </div>
-                    <div className="">
-                        <MdNotifications className='' onClick={() => { openNotifications() }} />
-                        {notification &&
-                            <Notification />
-                        }
-                    </div>
-                    <div className="">
-                        <Button btnText="Create" />
-                    </div>
-                    <div className="">
+                    <div className="flex justify-center gap-2 items-center">
                         <div className="">
-                            <img src={images.user1} alt="Profile" width={40} height={40} onClick={() => { openProfile() }} />
-                            {profile && <Profile />}
+                            <MdNotifications className='w-[28px] h-[28px] text-gray-800 cursor-pointer hover:scale-110 transition-all ease-in-out' onClick={() => { openNotifications() }} />
+                            {notification &&
+                                <Notification />
+                            }
+                        </div>
+                        <div className="hidden lg:flex">
+                            <Button btnText="Create" handleClick={() => { }} />
                         </div>
                     </div>
                     <div className="">
-                        <CgMenuRight className="" onClick={() => openSideBar()} />
+                        <div className="">
+                            <Image src={images.logo} className='cursor-pointer hover:scale-110 transition-all ease-in-out' alt="Profile" width={50} height={50} onClick={() => { openProfile() }} />
+                            {profile && <Profile />}
+                        </div>
+                    </div>
+                    <div className="lg:hidden flex  ">
+                        <CgMenuRight className="cursor-pointer text-gray-800 mr-4 h-[35px] w-[35px]" onClick={() => openSideBar()} />
                     </div>
                 </div>
             </div>
