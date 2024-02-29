@@ -27,7 +27,7 @@ function Footer () {
                 <div className="w-[50%] lg:w-[19%] flex flex-col gap-4 mt-4">
                     <h3 className="">Subscribe</h3>
                     <div className="flex gap-3 items-center justify-between rounded-full px-4 py-2 bg-gray-700">
-                        <input type='email' className='grow outline-none bg-transparent ' placeholder='Enter your email*' />
+                        <input type='email' className='grow outline-none bg-transparent text-white' placeholder='Enter your email*' />
                         <RiSendPlaneFill className='text-white cursor-pointer h-8 w-8 mr-2 my-2' />
                     </div>
                     <p className="text-gray-500 text-justify">Discover the most outstanding articles on all topics of NFT & your onw storeies and share them.</p>
