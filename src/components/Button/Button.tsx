@@ -7,7 +7,7 @@ interface ButtonProps {
 
 function Button ({ btnText, handleClick }: ButtonProps) {
     return (
-        <div className='bg-gray-500 text-white rounded-full py-3 cursor-pointer hover:bg-gray-700 px-5 text-sm font-bold' onClick={handleClick}>{btnText}</div>
+        <button className='bg-gray-500 text-white rounded-full py-3 cursor-pointer hover:bg-gray-700 px-5 text-sm font-bold' onClick={handleClick}>{btnText}</button>
     )
 }
 
