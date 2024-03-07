@@ -48,12 +48,12 @@ function Filter () {
     return (
         <div className='flex flex-col w-[80%] m-auto'>
             <div className="grid grid-cols-1 lg:grid-cols-2 justify-between">
-                <div className="grid grid-cols-2 lg:grid-cols-5 gap-14 text-gray-500 text-lg">
-                    <button className='border border-transparent w-[150px] hover:border hover:border-gray-500 rounded-full bg-transparent p-2' onClick={() => { }}>NFTs</button>
-                    <button className='border border-transparent w-[150px] hover:border hover:border-gray-500 rounded-full bg-transparent p-2' onClick={() => { }}>Arts</button>
-                    <button className='border border-transparent w-[150px] hover:border hover:border-gray-500 rounded-full bg-transparent p-2' onClick={() => { }}>Musics</button>
-                    <button className='border border-transparent w-[150px] hover:border hover:border-gray-500 rounded-full bg-transparent p-2' onClick={() => { }}>Sports</button>
-                    <button className='border border-transparent w-[150px] hover:border hover:border-gray-500 rounded-full bg-transparent p-2' onClick={() => { }}>Photography</button>
+                <div className="grid grid-cols-2 lg:grid-cols-5 gap-14 text-gray-500 text-lg space-x-8">
+                    <button className='border border-transparent w-[130px] hover:border hover:border-gray-500 rounded-full bg-transparent p-2' onClick={() => { }}>NFTs</button>
+                    <button className='border border-transparent w-[130px] hover:border hover:border-gray-500 rounded-full bg-transparent p-2' onClick={() => { }}>Arts</button>
+                    <button className='border border-transparent w-[130px] hover:border hover:border-gray-500 rounded-full bg-transparent p-2' onClick={() => { }}>Musics</button>
+                    <button className='border border-transparent w-[130px] hover:border hover:border-gray-500 rounded-full bg-transparent p-2' onClick={() => { }}>Sports</button>
+                    <button className='border border-transparent w-[130px] hover:border hover:border-gray-500 rounded-full bg-transparent p-2' onClick={() => { }}>Photos</button>
                 </div>
                 <div className="flex mt-6 lg:mt-0 justify-center lg:justify-end text-gray-500">
                     <div className="flex justify-center items-center w-full lg:w-[200px] gap-4 rounded-full bg-transparent border border-gray-500 px-6 py-4 " onClick={() => openFilter()}>

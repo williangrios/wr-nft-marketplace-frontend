@@ -5,7 +5,7 @@ import { MdVerified } from 'react-icons/md'
 
 function DaysComponent () {
     return (
-        <div className='rounded-xl w-full grow hover:shadow-right-bottom transition-all ease-in-out w=[100%]'>
+        <div className='rounded-xl w-full grow hover:shadow-right-bottom transition-all ease-in-out'>
             <div className="flex flex-col gap-1">
                 <div className="">
                     <Image src={images.categoryBackground1} className='rounded-xl' alt='Profile backgruond' style={{

@@ -40,15 +40,15 @@ function Collection () {
         <div className='flex flex-col items-center justify-center gap-6 w-[80%] m-auto'>
             <div className="flex flex-col items-center justify-center gap-6">
                 <h2 className="text-gray-600 text-4xl font-extrabold">Top list creators</h2>
-                <div className="flex flex-col items-center justify-center gap-4 p-4 rounded-full shadow-right-bottom ">
-                    <div className="rounded-full px-6 py-2 flex items-center gap-4 justify-between text-white">
-                        <button className={`flex items-center rounded-full p-3 justify-center gap-2 ${popular ? 'border border-gray-500 bg-white text-gray-500' : 'bg-gray-500'}`} onClick={() => openPopular()}>
+                <div className="flex flex-col items-center justify-center gap-4 p-4 rounded-full lg:shadow-right-bottom ">
+                    <div className="flex flex-col lg:flex-row w-full px-4 lg:py-2 justify-center gap-4 lg:gap-10 items-center text-white">
+                        <button className={`flex w-[180px] items-center rounded-full p-3 justify-center gap-2 ${popular ? 'border border-gray-500 bg-white text-gray-500' : 'bg-gray-500'}`} onClick={() => openPopular()}>
                             <BsFillAlarmFill />Last 24 hours
                         </button>
-                        <button className={`flex items-center rounded-full p-3 justify-center gap-2 ${following ? 'border border-gray-500 bg-white text-gray-500' : 'bg-gray-500'}`} onClick={() => openFollowing()}>
+                        <button className={`flex w-[180px] items-center rounded-full p-3 justify-center gap-2 ${following ? 'border border-gray-500 bg-white text-gray-500' : 'bg-gray-500'}`} onClick={() => openFollowing()}>
                             <BsCalendar3 />Last 7 days
                         </button>
-                        <button className={`flex items-center rounded-full p-3 justify-center gap-2 ${news ? 'border border-gray-500 bg-white text-gray-500' : 'bg-gray-500'}`} onClick={() => openNews()}>
+                        <button className={`flex w-[180px] items-center rounded-full p-3 justify-center gap-2 ${news ? 'border border-gray-500 bg-white text-gray-500' : 'bg-gray-500'}`} onClick={() => openNews()}>
                             <BsFillCalendarDateFill />Last 30 days
                         </button>
                     </div>
