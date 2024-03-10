@@ -14,22 +14,23 @@ function AudioCardSmall () {
     }
 
     return (
-        <div>
-            <div className="">
-                <Image src={images.categoryBackground1} alt='Music' width={100} height={100} className='' />
+        <div className="flex justify-center lg:justify-start items-center gap-10 lg:gap-4 text-gray-500 bg-gray-100 rounded-xl p-4">
+            <Image src={images.categoryBackground1} alt='Music' style={{
+                width: '50px',
+                height: '50px',
+            }} height={100} className='rounded-xl' />
+            <div className="flex flex-col gap-2 ">
+                <h4 className="font-bold">NFT Music #1123</h4>
                 <div className="">
-                    <h4 className="">NFT Music #1123</h4>
-                    <div className="">
-                        {/* <LikeProfile /> */}
-                        <div className="">
-                            <small className="">Price</small>
-                            <p className="">1.00 ETH</p>
-                        </div>
+                    {/* <LikeProfile /> */}
+                    <div className="flex items-center justify-center gap-4 border border-gray-500 rounded-xl">
+                        <small className="">Price</small>
+                        <p className="">1.00 ETH</p>
                     </div>
                 </div>
-                <div className="" onClick={() => playMusic()}>
-                    {play ? <TbPlayerPause /> : <TbPlayerPlay />}
-                </div>
+            </div>
+            <div className="bg-gray-600 text-gray-100 rounded-full flex w-10 h-10 items-center justify-center shadow-right-bottom cursor-pointer" onClick={() => playMusic()}>
+                {play ? <TbPlayerPause /> : <TbPlayerPlay />}
             </div>
         </div>
     )

@@ -3,9 +3,9 @@ import images from '../../img/index'
 import Image from 'next/image'
 
 function Notification () {
-    const linkFormatClasses = ' hover:bg-gray-700 px-3 py-2 hover:text-gray-300 h rounded-xl text-gray-800  block'
+    const linkFormatClasses = 'hover:bg-gray-700 px-3 py-2 hover:text-gray-300 h rounded-xl text-gray-800  block'
     return (
-        <div className='flex flex-col absolute z-10 bg-gray-300 rounded-xl p-3 shadow-right-bottom'>
+        <div className='flex right-10 md:right-auto flex-col absolute z-10 bg-gray-300 rounded-xl p-3 shadow-right-bottom'>
             <p className="text-lg">Notification</p>
             <div className="flex gap-2 mt-4 hover:bg-gray-700 px-3 py-2 hover:text-gray-300 h rounded-xl text-gray-800 cursor-pointer">
                 <div className="">

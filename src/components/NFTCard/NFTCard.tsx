@@ -23,14 +23,11 @@ function NFTCard () {
         <div className='w-[80%] m-auto mt-10 grid  grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2'>
             {featureArray.map((item, i) => (
                 <div className={`flex h-[420px] md:h-[400px] flex-col overflow-hidden rounded-2xl cursor-pointer hover:shadow-lg transition duration-200 ease-out shadow-xs shadow-black hover:shadow-xs`} key={i + 1}>
-                    {/* <div key={i + 1} className='relative cursor-pointer m-auto shadow-right-bottom grid grid-rows-[auto,auto,auto] bg-green-300  rounded-lg h-[230px] w-[230px] overflow-hidden' > */}
-                    {/* abaixo div que vai ficar na parte de cima */}
                     <div className="hover:scale-110 bg-gray-600 ease-in-out transition-all transform scale-100">
                         <Image className='rounded-tr-2xl rounded-tl-2xl z-50' src={images.nft_1} alt='NFT Image' style={{
                             width: '100%',
                             height: 'auto',
                         }} />
-                        {/* <Image className='rounded-tr-2xl rounded-tl-2xl z-50' src={images.nft_1} alt='NFT Image' fill={true} objectFit='cover' style={{ objectFit: "contain" }} /> */}
                     </div>
                     <div className="flex justify-between gap-2 px-2 items-start mt-5">
                         <div className="flex flex-col items-center justify-between w-[60%]">

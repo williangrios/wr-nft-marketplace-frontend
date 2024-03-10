@@ -10,8 +10,8 @@ import Image from 'next/image'
 function Profile () {
     const linkFormatClasses = 'flex items-center gap-2 w-full h-full hover:bg-gray-700 px-3 py-2 hover:text-gray-300 h rounded-xl text-gray-800  block'
     return (
-        <div className="flex flex-col absolute z-10 bg-gray-300 rounded-xl p-3 shadow-right-bottom">
-            <div className="flex items-center justify-between w-full  gap-2">
+        <div className="flex flex-col right-10 md:right-24 lg:right-36 absolute z-10 bg-gray-300 rounded-xl p-3 shadow-right-bottom">
+            <div className="flex items-center justify-between w-full gap-2">
                 <Image src={images.logo} alt='user image' width={50} height={50} className='rounded-full' />
                 <div className="flex flex-col flex-grow">
                     <p className="text-sm" text-sm>Willian</p>
