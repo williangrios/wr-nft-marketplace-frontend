@@ -9,7 +9,7 @@ function Discover () {
         },
         {
             name: "Search",
-            link: "search"
+            link: "SearchPage"
         },
         {
             name: "Author profile",
@@ -17,7 +17,7 @@ function Discover () {
         },
         {
             name: "NFT Details",
-            link: "NFT-details"
+            link: "NFTDetails"
         },
         {
             name: "Account settings",
