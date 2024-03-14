@@ -3,14 +3,11 @@ import { TiSocialFacebook, TiSocialInstagram, TiSocialLinkedin, TiSocialTwitter,
 import images from '../../../../img/index'
 import Image from 'next/image'
 
-interface CollectionProfileProps {
-    bannerImage: any
-}
 
 function CollectionProfile () {
-    const cardArray = [1, 2, 3, 4, 5]
+    const cardArray = [1, 2, 3, 4]
     return (
-        <div className='w-full mt-6'>
+        <div className='w-full my-6'>
             <div className="w-[80%] m-auto grid grid-cols-1 lg:grid-cols-4 lg:gap-4 bg-gray-100 rounded-xl shadow-right-bottom p-4">
                 <div className="col-span-1">
                     <Image className='rounded-xl' src={images.nft_1} objectFit='cover' alt='nft image' width={800} height={800} />
@@ -35,7 +32,7 @@ function CollectionProfile () {
                 <div className="col-span-3 text-gray-600">
                     <h1 className="font-extrabold text-2xl mb-4 ">Awesome NFTs Collection</h1>
                     <p className="my-4 leading-4 w-[70%]">COLLECTION DESCRIPTIONCOLLECTION DESCRIPTIONCOLLECTION DESCRIPTIONCOLLECTION DESCRIPTION</p>
-                    <div className="flex flex-col lg:flex-row lg:justify-start gap-4">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 lg:justify-start gap-4">
                         {
                             cardArray.map((item, i) => (
                                 <div className="flex flex-col p-8 bg-gray-50 rounded-xl shadow-md items-center justify-center " key={i + 1}>
