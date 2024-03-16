@@ -23,34 +23,38 @@ function SideBar ({ setOpenSideMenu }) {
         },
         {
             name: "Author profile",
-            link: "author-profile"
+            link: "AuthorProfile"
         },
         {
             name: "NFT Details",
-            link: "NFTDetails"
+            link: "NftDetails"
         },
         {
             name: "Account settings",
-            link: "account-settings"
+            link: "account"
+        },
+        {
+            name: "Upload NFT",
+            link: "UploadNft"
         },
         {
             name: "Connect wallet",
-            link: "connect-wallet"
+            link: "ConnectWallet"
         },
         {
             name: "Blog",
-            link: "blog"
+            link: "Blog"
         },
     ]
 
     const helpCenter = [
         {
             name: "About",
-            link: "about"
+            link: "AboutUs"
         },
         {
             name: "Contact us",
-            link: "contact-us"
+            link: "ContactUs"
         },
         {
             name: "Sign up",
@@ -62,7 +66,7 @@ function SideBar ({ setOpenSideMenu }) {
         },
         {
             name: "Subscription",
-            link: "subscription"
+            link: "Subscription"
         },
     ]
 

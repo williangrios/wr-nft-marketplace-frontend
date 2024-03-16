@@ -5,11 +5,11 @@ function HelpCenter () {
     const helpCenter = [
         {
             name: "About",
-            link: "about"
+            link: "AboutUs"
         },
         {
             name: "Contact us",
-            link: "contact-us"
+            link: "ContactUs"
         },
         {
             name: "Sign up",
@@ -21,7 +21,7 @@ function HelpCenter () {
         },
         {
             name: "Subscription",
-            link: "subscription"
+            link: "Subscription"
         },
     ]
 

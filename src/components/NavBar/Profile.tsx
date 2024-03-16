@@ -23,7 +23,7 @@ function Profile () {
                     <div className={linkFormatClasses}>
                         <FaUserAlt />
                         <p className="">
-                            <Link href={{ pathname: '/my-profile' }}>My profile</Link>
+                            <Link href={{ pathname: '/account' }}>My profile</Link>
                         </p>
                     </div>
                     <div className={linkFormatClasses}>

@@ -81,7 +81,7 @@ function NavBar () {
                     <div className="">
                         <div className="hidden lg:flex items-center justify-center gap-2 border border-black rounded-full py-2 px-3">
                             <input type="text" className="px-3 py-1 outline-none" placeholder='Search NFT' />
-                            <BsSearch onClick={() => { }} className="" />
+                            <BsSearch onClick={() => { }} className="cursor-pointer" />
                         </div>
                     </div>
                 </div>

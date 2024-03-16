@@ -89,9 +89,9 @@ function NFTDescription () {
         <div>
             <div className="text-gray-500 ">
                 {/* PART ONE */}
-                <div className="">
-                    <p className="">Virtual worlds</p>
-                    <div className="flex gap-5 items-center ">
+                <div className="grid grid-cols-2 items-center">
+                    <p className="p-1 rounded-full bg-gray-600 text-white text-center">Virtual worlds</p>
+                    <div className="flex gap-5 items-center justify-end">
                         <MdCloudUpload className='cursor-pointer rounded-full h-10 p-2 w-10 transition-all ease-in-out shadow-right-bottom hover:bg-gray-500 hover:text-white' onClick={() => openSocial()} />
                         {social && (
                             <div className="absolute mt-32 flex gap-3 bg-white rounded-xl p-3 shadow-right-bottom">
@@ -132,8 +132,8 @@ function NFTDescription () {
                     </div>
                 </div>
                 {/* PART TWO */}
-                <div className="">
-                    <h1 className="text-3xl font-extrabold">BearX #23512</h1>
+                <div className="flex flex-col gap-4">
+                    <h1 className="text-3xl font-extrabold mt-4">BearX #23512</h1>
                     <div className="flex justify-around items-center my-6">
                         <div className="flex justify-between gap-2 items-start">
                             <Image src={images.logo} alt='profile' width={40} height={40} className='rounded-full' />
@@ -153,7 +153,7 @@ function NFTDescription () {
 
                     <div className="flex flex-col gap-4">
                         <p className="flex items-center gap-2">
-                            <MdVerified />
+                            <MdTimer />
                             <span className="">Auction ending in:</span>
                         </p>
                         <div className="flex items-center gap-4">
@@ -193,21 +193,21 @@ function NFTDescription () {
                         {
                             history && (
                                 <div className="">
-                                    <NFTTabs dataTab={historyArray} icon={<MdVerified />} />
+                                    <NFTTabs dataTab={historyArray} icon={null} />
                                 </div>
                             )
                         }
                         {
                             provanance && (
                                 <div className="">
-                                    <NFTTabs dataTab={provananceArray} />
+                                    <NFTTabs dataTab={provananceArray} icon={null} />
                                 </div>
                             )
                         }
                         {
                             owner && (
                                 <div className="">
-                                    <NFTTabs dataTab={ownerArray} />
+                                    <NFTTabs dataTab={ownerArray} icon={<MdVerified />} />
                                 </div>
                             )
                         }

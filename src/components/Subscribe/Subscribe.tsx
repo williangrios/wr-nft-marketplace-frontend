@@ -19,8 +19,8 @@ function Subscribe () {
                         <small className="font-extrabold">Get premium magazines</small>
                     </div>
                     <div className="flex gap-3 items-center justify-between rounded-full px-4 py-2 bg-gray-600 text-white">
-                        <input type='email' className='grow outline-none bg-transparent placeholder-white ' placeholder='Enter your email*' />
-                        <RiSendPlaneFill className='text-white cursor-pointer h-8 w-8 mr-2 my-2' />
+                        <input type='email' className='grow outline-none bg-transparent' placeholder='Enter your email' />
+                        <RiSendPlaneFill className='text-white cursor-pointer h-6 w-6 mr-2 my-2 hover:scale-125 transition-all ease-in-out' />
                     </div>
                 </div>
                 <div className="hidden lg:flex w-full lg:[w-60%] p-14">

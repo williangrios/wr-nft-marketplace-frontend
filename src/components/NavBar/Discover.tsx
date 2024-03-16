@@ -13,23 +13,27 @@ function Discover () {
         },
         {
             name: "Author profile",
-            link: "author-profile"
+            link: "AuthorProfile"
         },
         {
             name: "NFT Details",
-            link: "NFTDetails"
+            link: "NftDetails"
         },
         {
             name: "Account settings",
-            link: "account-settings"
+            link: "account"
+        },
+        {
+            name: "Upload NFT",
+            link: "UploadNft"
         },
         {
             name: "Connect wallet",
-            link: "connect-wallet"
+            link: "ConnectWallet"
         },
         {
             name: "Blog",
-            link: "blog"
+            link: "Blog"
         },
     ]
     return (
