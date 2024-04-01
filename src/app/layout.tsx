@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar/NavBar";
 import Footer from "@/components/Footer/Footer";
+import { WRNFTMarketplaceProvider } from "@/context/WRNFTMarketplaceContext";
 
 const poppins = Poppins({ weight: "400", subsets: ['latin'] });
 
@@ -19,9 +20,11 @@ export default function RootLayout ({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <NavBar />
-        {children}
-        <Footer />
+        <WRNFTMarketplaceProvider>
+          <NavBar />
+          {children}
+          <Footer />
+        </WRNFTMarketplaceProvider>
       </body>
     </html>
   );

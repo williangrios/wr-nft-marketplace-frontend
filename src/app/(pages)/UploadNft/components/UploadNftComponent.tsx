@@ -4,24 +4,42 @@ import React, { useState } from "react";
 import { AiOutlinePicture, AiTwotonePropertySafety } from "react-icons/ai";
 import { FaPercent } from "react-icons/fa";
 import { MdOutlineAttachFile, MdOutlineHttp } from "react-icons/md";
-import { TiSocialFacebook, TiSocialInstagram, TiSocialTwitter, TiTick } from "react-icons/ti";
+import {
+  TiSocialFacebook,
+  TiSocialInstagram,
+  TiSocialTwitter,
+  TiTick,
+} from "react-icons/ti";
 import images from "../../../../img/index";
 import DropZone from "./DropZone";
 import Button from "@/components/Button/Button";
+import { useRouter } from "next/navigation";
 
-function UploadNftComponent() {
+interface UploadNftComponentProps {
+  uploadToPinata: any;
+  createNFT: any;
+}
+
+function UploadNftComponent({
+  createNFT,
+  uploadToPinata,
+}: UploadNftComponentProps) {
+  const router = useRouter();
+  const [price, setPrice] = useState("");
   const [active, setActive] = useState(0);
-  const [itemName, setItemName] = useState("");
+  const [name, setName] = useState("");
   const [website, setWebsite] = useState("");
   const [description, setDescription] = useState("");
   const [royalties, setRoyalties] = useState("");
   const [fileSize, setFileSize] = useState("");
   const [properties, setProperties] = useState("");
   const [category, setCategory] = useState(0);
+  const [image, setImage] = useState(null);
 
   const inputClasses =
     "p-2 bg-gray-200 rounded-lg border-gray-700 border outline-none w-full text-gray-600";
-  const divBlockProperties = "flex flex-col justify-around md:flex-row gap-2 m-auto w-full";
+  const divBlockProperties =
+    "flex flex-col justify-around md:flex-row gap-2 m-auto w-full";
   const divSocialClasses =
     "flex rounded-full items-center justify-center text-white bg-gray-600 pl-2 mb-6";
   const socialIconsClasses = "w-8 h-8 mx-2";
@@ -50,9 +68,9 @@ function UploadNftComponent() {
   ];
 
   const chooseItem = (item: any, i: number) => {
-    setActive(i+1)
-    setCategory(item.category)
-  }
+    setActive(i + 1);
+    setCategory(item.category);
+  };
 
   return (
     <div>
@@ -60,14 +78,15 @@ function UploadNftComponent() {
         title="JPG, PNG, WEBM, Max 100 Mb"
         heading="Drag & drop file"
         subHeading="or browse media in your device"
-        itemName={itemName}
+        name={name}
         website={website}
         description={description}
         royalties={royalties}
         fileSize={fileSize}
         category={category}
         properties={properties}
-        image={images.upload}
+        setImage={setImage}
+        uploadToPinata={uploadToPinata}
       />
       <div className="">
         <label htmlFor="nft" className="block font-extrabold mt-4 pl-6">
@@ -79,10 +98,10 @@ function UploadNftComponent() {
             type="text"
             placeholder="Item name"
             className={inputClasses}
-            onChange={(e) => setItemName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
         </div>
-        <div className=''>
+        <div className="">
           <label htmlFor="website" className="block font-extrabold pl-6">
             Website
           </label>
@@ -96,91 +115,135 @@ function UploadNftComponent() {
             />
           </div>
         </div>
-        <p className="">WRNFT Marketplace will include a link to this URL on this item details page, so that users can click to learn more about it. You are welcome to link to your own webpage with more details.</p>
+        <p className="">
+          WRNFT Marketplace will include a link to this URL on this item details
+          page, so that users can click to learn more about it. You are welcome
+          to link to your own webpage with more details.
+        </p>
         <div className="">
-            <label htmlFor="description" className="block font-extrabold mt-4 pl-6">
-              Description
+          <label
+            htmlFor="description"
+            className="block font-extrabold mt-4 pl-6"
+          >
+            Description
+          </label>
+          <textarea
+            name=""
+            id=""
+            cols={30}
+            rows={6}
+            className={inputClasses}
+            placeholder="Something about your self"
+            onChange={(e) => setDescription(e.target.value)}
+          ></textarea>
+          <p className="mb-4">
+            The description will be included on the items detail page underneath
+            its image. Markdown syntax is supported.
+          </p>
+        </div>
+        <div className="">
+          <label htmlFor="name" className="font-extrabold mt-10 pl-6">
+            Choose collection
+          </label>
+          <p className="">Choose an existing collection or create a new one</p>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
+            {catArray.map((item, i) => (
+              <div
+                className={`border border-gray-500 cursor-pointer rounded-lg p-2 ${
+                  active === i + 1 ? "bg-gray-500 text-white" : ""
+                }`}
+                key={i + 1}
+                onClick={() => chooseItem(item, i)}
+              >
+                <div className="flex">
+                  <div className="w-[70%]">
+                    <Image
+                      src={item.image}
+                      alt="background image"
+                      width={70}
+                      height={70}
+                      className="rounded-full w-14 h-14"
+                      objectFit="contain"
+                    />
+                  </div>
+                  <div className="w-[30%] justify-center flex">
+                    <TiTick />
+                  </div>
+                </div>
+                <p className="mt-2 font-semibold">
+                  Crypto legend - {item.category}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className={` ${divBlockProperties} pt-4`}>
+          <div className="">
+            <label htmlFor="royalties" className="block pl-6">
+              Royalties
             </label>
-            <textarea
-              name=""
-              id=""
-              cols={30}
-              rows={6}
-              className={inputClasses}
-              placeholder="Something about your self"
-              onChange={(e) => setDescription(e.target.value)}
-            ></textarea>
-            <p className="mb-4">The description will be included on the items detail page underneath its image. Markdown syntax is supported.</p>
+            <div className={divSocialClasses}>
+              <FaPercent className={socialIconsClasses} />
+              <input
+                type="number"
+                placeholder="20"
+                className={inputClasses}
+                onChange={(e) => setRoyalties(e.target.value)}
+              />
+            </div>
           </div>
           <div className="">
-            <label htmlFor="name" className="font-extrabold mt-10 pl-6">Choose collection</label>
-            <p className="">Choose an existing collection or create a new one</p>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
-              {catArray.map((item, i) => (
-                <div className={`border border-gray-500 cursor-pointer rounded-lg p-2 ${active === i + 1 ? 'bg-gray-500 text-white' : ''}`} key={i+1} onClick={(() => chooseItem(item, i ))}>
-                  <div className="flex">
-                    <div className="w-[70%]">
-                      <Image src={item.image} alt="background image" width={70} height={70} className="rounded-full w-14 h-14" objectFit="contain"/>
-                    </div>
-                    <div className="w-[30%] justify-center flex">
-                      <TiTick />
-                    </div>
-                  </div>
-                  <p className="mt-2 font-semibold">Crypto legend - {item.category}</p>
-                </div>
-              ))}
+            <label htmlFor="Size" className="block pl-6">
+              Size
+            </label>
+            <div className={divSocialClasses}>
+              <MdOutlineAttachFile className={socialIconsClasses} />
+              <input
+                type="text"
+                placeholder="165Mb"
+                className={inputClasses}
+                onChange={(e) => setFileSize(e.target.value)}
+              />
             </div>
           </div>
-          <div className={` ${divBlockProperties} pt-4`}>
+          <div className="">
+            <label htmlFor="Price" className="block pl-6">
+              Price
+            </label>
             <div className="">
-              <label htmlFor="royalties" className="block pl-6">
-                Royalties
-              </label>
               <div className={divSocialClasses}>
-                <FaPercent className={socialIconsClasses} />
-                <input
-                  type="number"
-                  placeholder="20"
-                  className={inputClasses}
-                  onChange={(e) => setRoyalties(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="">
-              <label htmlFor="Size" className="block pl-6">
-                Size
-              </label>
-              <div className={divSocialClasses}>
-                <MdOutlineAttachFile className={socialIconsClasses} />
+                <AiTwotonePropertySafety className={socialIconsClasses} />
                 <input
                   type="text"
-                  placeholder="165Mb"
+                  placeholder="Price"
                   className={inputClasses}
-                  onChange={(e) => setFileSize(e.target.value)}
+                  onChange={(e) => setPrice(e.target.value)}
                 />
               </div>
             </div>
-            <div className="">
-              <label htmlFor="Properties" className="block pl-6">
-                Properties
-              </label>
-              <div className="">
-                <div className={divSocialClasses}>
-                  <AiTwotonePropertySafety className={socialIconsClasses} />
-                  <input
-                    type="text"
-                    placeholder="Properties"
-                    className={inputClasses}
-                    onChange={(e) => setProperties(e.target.value)}
-                  />
-                </div>
-              </div>
-            </div>
           </div>
-          <div className="flex justify-center gap-8">
-            <Button btnText="Upload" handleClick={() => {}} classStyle="" />
-            <Button btnText="Preview" handleClick={() => {}} classStyle="" />
-          </div>
+        </div>
+        <div className="flex justify-center gap-8">
+          <Button
+            btnText="Upload"
+            handleClick={async () =>
+              createNFT(
+                name,
+                price,
+                image,
+                description,
+                router,
+                website,
+                royalties,
+                fileSize,
+                category,
+                properties
+              )
+            }
+            classStyle=""
+          />
+          <Button btnText="Preview" handleClick={() => {}} classStyle="" />
+        </div>
       </div>
     </div>
   );

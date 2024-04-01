@@ -1,3 +1,4 @@
+"use client";
 import AudioLive from "@/components/AudioLive/AudioLive";
 import BigNFTSlider from "@/components/BigNFTSlider/BigNFTSlider";
 import Brand from "@/components/Brand/Brand";
@@ -12,27 +13,53 @@ import Slider from "@/components/Slider/Slider";
 import Subscribe from "@/components/Subscribe/Subscribe";
 import Title from "@/components/Title/Title";
 import Video from "@/components/Video/Video";
+import { WRNFTMarketplaceContext } from "@/context/WRNFTMarketplaceContext";
+import { useContext, useEffect } from "react";
 
-export default function Home () {
+export default function Home() {
+  const { checkIfWalletIsConnected } = useContext(WRNFTMarketplaceContext);
+
+  useEffect(() => {
+    checkIfWalletIsConnected();
+  }, []);
+
   return (
     <main>
       <HeroSection />
       <Service />
       <BigNFTSlider />
-      <Title title="Latest Audio Collection" subtitle="Discover amazing audios." />
+      <Title
+        title="Latest Audio Collection"
+        subtitle="Discover amazing audios."
+      />
       <AudioLive />
-      <Title title="New Collection" subtitle="Discover amazing things by collection." />
+      <Title
+        title="New Collection"
+        subtitle="Discover amazing things by collection."
+      />
       <FollowerTab />
-      <Title title="Explore NFTs Video" subtitle="Click on play icon and enjoy NFTs video." />
+      <Title
+        title="Explore NFTs Video"
+        subtitle="Click on play icon and enjoy NFTs video."
+      />
       <Collection />
-      <Title title="Featured NFTs" subtitle="Discover the most outstanding NFTs in all topics of life." />
+      <Title
+        title="Featured NFTs"
+        subtitle="Discover the most outstanding NFTs in all topics of life."
+      />
       <Filter />
       <NFTCard />
-      <Title title="Browse by category" subtitle="Exlpore the NFTs in the most featured categories." />
+      <Title
+        title="Browse by category"
+        subtitle="Exlpore the NFTs in the most featured categories."
+      />
       <Category />
       <Subscribe />
       <Brand />
-      <Title title="The videos" subtitle="Check out our hottest videos. View more and share more new perspectives on just about any topic." />
+      <Title
+        title="The videos"
+        subtitle="Check out our hottest videos. View more and share more new perspectives on just about any topic."
+      />
       <Video />
     </main>
   );
