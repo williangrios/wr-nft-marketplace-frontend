@@ -1,15 +1,19 @@
-import React from 'react'
-import NFTDescription from './NFTDescription'
-import NFTTabs from './NFTTabs'
-import NFTDetailsImage from './NFTDetailsImage'
+import React from "react";
+import NFTDescription from "./NFTDescription";
+import NFTTabs from "./NFTTabs";
+import NFTDetailsImage from "./NFTDetailsImage";
 
-function NFTDetailsPage () {
-    return (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-[80%] m-auto h-full">
-            <NFTDetailsImage />
-            <NFTDescription />
-        </div>
-    )
+interface NFTDetailsPageProps {
+  nft: any;
 }
 
-export default NFTDetailsPage
+function NFTDetailsPage({ nft }: NFTDetailsPageProps) {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-[80%] m-auto h-full">
+      <NFTDetailsImage nft={nft} />
+      <NFTDescription nft={nft} />
+    </div>
+  );
+}
+
+export default NFTDetailsPage;
