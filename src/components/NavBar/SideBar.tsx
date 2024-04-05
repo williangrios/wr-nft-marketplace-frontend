@@ -2,17 +2,9 @@
 import React, { useContext, useState } from "react";
 import images from "../../img/index";
 import Link from "next/link";
-import Image from "next/image";
 import { GrClose } from "react-icons/gr";
-import {
-  TiArrowSortedDown,
-  TiArrowSortedUp,
-  TiSocialFacebook,
-  TiSocialInstagram,
-  TiSocialLinkedin,
-  TiSocialTwitter,
-  TiSocialYoutube,
-} from "react-icons/ti";
+import { TiArrowSortedDown } from "react-icons/ti";
+import { useRouter } from "next/navigation";
 import Button from "../Button/Button";
 import Socials from "../Socials/Socials";
 import { WRNFTMarketplaceContext } from "@/context/WRNFTMarketplaceContext";
@@ -21,6 +13,7 @@ function SideBar({ setOpenSideMenu }) {
   const [openDiscover, setOpenDiscover] = useState(false);
   const [openHelp, setOpenHelp] = useState(false);
   const { currentAccount, connectWallet } = useContext(WRNFTMarketplaceContext);
+  const router = useRouter();
 
   const discover = [
     {
@@ -33,7 +26,7 @@ function SideBar({ setOpenSideMenu }) {
     },
     {
       name: "Author profile",
-      link: "AuthorProfile",
+      link: "Author",
     },
     {
       name: "NFT Details",
@@ -161,9 +154,12 @@ function SideBar({ setOpenSideMenu }) {
         {currentAccount === "" ? (
           <Button btnText="Connect" handleClick={() => connectWallet()} />
         ) : (
-          <a href="/UploadNft">
-            <Button btnText="Create" handleClick={() => {}} />
-          </a>
+          <Button
+            btnText="Create"
+            handleClick={() => {
+              router.push("/UploadNft");
+            }}
+          />
         )}
       </div>
     </div>
