@@ -6,7 +6,7 @@ import Notification from "./Notification";
 import Profile from "./Profile";
 import Sidebar from "./SideBar";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { MdNotifications } from "react-icons/md";
 import { BsSearch } from "react-icons/bs";
 import { CgMenuLeft, CgMenuRight } from "react-icons/cg";
@@ -16,6 +16,7 @@ import {
   WRNFTMarketplaceContext,
   WRNFTMarketplaceProvider,
 } from "@/context/WRNFTMarketplaceContext";
+import { DiJqueryLogo } from "react-icons/di";
 
 function NavBar() {
   const [discover, setDiscover] = useState(false);
@@ -23,7 +24,7 @@ function NavBar() {
   const [notification, setNotification] = useState(false);
   const [profile, setProfile] = useState(false);
   const [openSideMenu, setOpenSideMenu] = useState(false);
-
+  const router = useRouter();
   const { currentAccount, connectWallet } = useContext(WRNFTMarketplaceContext);
 
   const openProfile = () => {
@@ -81,12 +82,9 @@ function NavBar() {
       <div className="w-[100%] lg:w-[80%] m-auto flex items-center justify-between">
         <div className="flex items-center w-[50%] justify-around ">
           <div className="">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <Image
-              src={images.logo}
-              alt="WR NFT Marketplace"
-              width={75}
-              height={75}
+            <DiJqueryLogo
+              className="h-16 w-16 text-purple-900 cursor-pointer hover:scale-110 transform transition-all ease-in-out"
+              onClick={() => router.push("/")}
             />
           </div>
           <div className="">
@@ -145,9 +143,12 @@ function NavBar() {
               {currentAccount === "" ? (
                 <Button btnText="Connect" handleClick={() => connectWallet()} />
               ) : (
-                <a href="/UploadNft">
-                  <Button btnText="Create" handleClick={() => {}} />
-                </a>
+                <Button
+                  btnText="Create"
+                  handleClick={() => {
+                    router.push("/UploadNft");
+                  }}
+                />
               )}
             </div>
           </div>
@@ -163,7 +164,7 @@ function NavBar() {
                   openProfile();
                 }}
               />
-              {profile && <Profile />}
+              {profile && <Profile currentAccount={currentAccount} />}
             </div>
           </div>
           <div className="lg:hidden flex  ">
