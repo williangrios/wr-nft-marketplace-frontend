@@ -34,11 +34,14 @@ function DropZone({
   setImage,
 }: DropZoneProps) {
   const [fileUrl, setFileUrl] = useState(null);
-  const onDrop = useCallback(async (acceptedFile: any) => {
-    const url = await uploadToPinata(acceptedFile[0]);
-    setFileUrl(url);
-    setImage(url);
-  }, []);
+  const onDrop = useCallback(
+    async (acceptedFile: any) => {
+      const url = await uploadToPinata(acceptedFile[0]);
+      setFileUrl(url);
+      setImage(url);
+    },
+    [uploadToPinata, setImage]
+  );
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
