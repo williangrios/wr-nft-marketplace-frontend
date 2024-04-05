@@ -2,10 +2,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import webM3Modal from "web3Modal";
 import { ethers } from "ethers";
-import Router from "next/router";
 import { WRNFTMarketPlaceABI, WRNFTMarketPlaceAddress } from "./constants";
+import { useRouter } from "next/navigation";
 import axios from "axios";
-import { create as ipfsHttpClient } from "ipfs-http-client";
 
 const fetchContract = (signerOrProvider: any) =>
   new ethers.Contract(
@@ -27,29 +26,15 @@ const connectingWithSmartContract = async () => {
   }
 };
 
-const projectId = "";
-const projectSecretKey = "";
-const auth = `Basic${Buffer.from(`${projectId}:${projectSecretKey}`).toString(
-  "base64"
-)}`;
-const subdomain = "";
-
-const client = ipfsHttpClient({
-  host: "infura-ipfs.io",
-  port: 5001,
-  protocol: "https",
-  headers: {
-    authorization: auth,
-  },
-});
-
 export const WRNFTMarketplaceContext = React.createContext<any>(undefined);
 
 export const WRNFTMarketplaceProvider = ({ children }: any) => {
   const [currentAccount, setCurrentAccount] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     checkIfWalletIsConnected();
+    fetchNFTs();
   }, []);
 
   const checkIfWalletIsConnected = async () => {
@@ -78,17 +63,6 @@ export const WRNFTMarketplaceProvider = ({ children }: any) => {
       // window.location.reload();
     } catch (error) {
       console.log("Something went wrong", error);
-    }
-  };
-
-  const uploadToIPFS = async (file: any) => {
-    try {
-      const added = await client.add({ content: file });
-      const url = `${subdomain}/ipfs/${added.path}`;
-      return url;
-    } catch (error) {
-      console.log("Error uploading to IPFS");
-      return "";
     }
   };
 
@@ -135,6 +109,7 @@ export const WRNFTMarketplaceProvider = ({ children }: any) => {
             value: listingPrice.toString(),
           });
       await transaction.wait();
+      // router.push("/SearchPage");
     } catch (error) {
       console.log("Error while creating sale", error);
     }
@@ -148,7 +123,8 @@ export const WRNFTMarketplaceProvider = ({ children }: any) => {
     router: any
   ) => {
     if (!name || !description || !price || !image) {
-      return console.log("Data is missing", name, description, price);
+      alert("Data is missing");
+      return;
     }
     const data = JSON.stringify({ name, description, image });
     try {
@@ -165,6 +141,7 @@ export const WRNFTMarketplaceProvider = ({ children }: any) => {
       });
       const url = `https://gateway.pinata.cloud/ipfs/${response.data.IpfsHash}`;
       await createSale(url, price, false, null);
+      router.push("/SearchPage");
     } catch (error) {
       console.log("Create NFT Error", error);
     }
@@ -191,7 +168,7 @@ export const WRNFTMarketplaceProvider = ({ children }: any) => {
             );
             return {
               price,
-              tokenId: tokenId.toNumber(),
+              tokenId,
               seller,
               owner,
               image,
@@ -204,7 +181,7 @@ export const WRNFTMarketplaceProvider = ({ children }: any) => {
       );
       return items;
     } catch (error) {
-      console.log("Error while fetching NFTs");
+      console.log("Error while fetching NFTs", error);
     }
   };
 
@@ -228,7 +205,7 @@ export const WRNFTMarketplaceProvider = ({ children }: any) => {
             );
             return {
               price,
-              tokenId: tokenId.toNumber(),
+              tokenId,
               seller,
               owner,
               image,
@@ -248,24 +225,35 @@ export const WRNFTMarketplaceProvider = ({ children }: any) => {
   const buyNFT = async (nft: any) => {
     try {
       const contract = await connectingWithSmartContract();
+      const tokenId = parseInt(nft.tokenId);
       const price = ethers.parseUnits(nft.price.toString(), "ether");
-      const transaction = await contract!.createMarketSale(nft.tokenId, {
+      console.log(price);
+      if (!contract) return;
+      const transaction = await contract.createMarketSale(tokenId, {
         value: price,
       });
       await transaction.wait();
-    } catch (error) {}
+      // // router.push('/author')
+      router.push("/SearchPage");
+    } catch (error) {
+      console.log("deu erro", error);
+    }
   };
+
+  useEffect(() => {
+    fetchMyNFTsOrListedNFTs("");
+  }, []);
 
   return (
     <WRNFTMarketplaceContext.Provider
       value={{
         checkIfWalletIsConnected,
         connectWallet,
-        uploadToIPFS,
         createNFT,
         fetchNFTs,
         fetchMyNFTsOrListedNFTs,
         buyNFT,
+        createSale,
         uploadToPinata,
         currentAccount,
       }}
