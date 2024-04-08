@@ -4,12 +4,7 @@ import React, { useState } from "react";
 import { AiOutlinePicture, AiTwotonePropertySafety } from "react-icons/ai";
 import { FaPercent } from "react-icons/fa";
 import { MdOutlineAttachFile, MdOutlineHttp } from "react-icons/md";
-import {
-  TiSocialFacebook,
-  TiSocialInstagram,
-  TiSocialTwitter,
-  TiTick,
-} from "react-icons/ti";
+import { TiTick } from "react-icons/ti";
 import images from "../../../../img/index";
 import DropZone from "./DropZone";
 import Button from "@/components/Button/Button";

@@ -1,7 +1,7 @@
 "use client";
 import Button from "@/components/Button/Button";
 import Image from "next/image";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { BiDollar, BiTransferAlt } from "react-icons/bi";
 import { BsThreeDots } from "react-icons/bs";
 import { FaPercentage, FaWallet } from "react-icons/fa";

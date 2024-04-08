@@ -1,7 +1,5 @@
 "use client";
-import Image from "next/image";
-import React, { useState, useEffect, useContext } from "react";
-import images from "../../img/index";
+import React, { useContext } from "react";
 import { WRNFTMarketplaceContext } from "@/context/WRNFTMarketplaceContext";
 import { IoIosWarning } from "react-icons/io";
 

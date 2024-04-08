@@ -12,10 +12,7 @@ import { BsSearch } from "react-icons/bs";
 import { CgMenuLeft, CgMenuRight } from "react-icons/cg";
 import Button from "../Button/Button";
 import images from "../../img/index";
-import {
-  WRNFTMarketplaceContext,
-  WRNFTMarketplaceProvider,
-} from "@/context/WRNFTMarketplaceContext";
+import { WRNFTMarketplaceContext } from "@/context/WRNFTMarketplaceContext";
 import { DiJqueryLogo } from "react-icons/di";
 import Error from "../Error/Error";
 

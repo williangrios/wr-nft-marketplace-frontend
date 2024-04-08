@@ -1,18 +1,9 @@
 "use client";
 import Image from "next/image";
 import React, { useCallback, useEffect, useState } from "react";
-import {
-  AiFillFile,
-  AiFillFire,
-  AiFillHeart,
-  AiOutlineHeart,
-} from "react-icons/ai";
+import { AiFillFire, AiFillHeart } from "react-icons/ai";
 import { MdTimer, MdVerified } from "react-icons/md";
-import {
-  TbArrowBigLeftLine,
-  TbArrowBigLeftLines,
-  TbArrowBigRightLine,
-} from "react-icons/tb";
+import { TbArrowBigLeftLine, TbArrowBigRightLine } from "react-icons/tb";
 import images from "../../img";
 import Button from "../Button/Button";
 

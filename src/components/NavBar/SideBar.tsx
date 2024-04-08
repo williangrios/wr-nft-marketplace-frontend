@@ -1,6 +1,5 @@
 "use client";
 import React, { useContext, useState } from "react";
-import images from "../../img/index";
 import Link from "next/link";
 import { GrClose } from "react-icons/gr";
 import { TiArrowSortedDown } from "react-icons/ti";

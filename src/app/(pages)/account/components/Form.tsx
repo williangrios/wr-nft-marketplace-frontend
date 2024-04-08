@@ -6,9 +6,7 @@ import { MdOutlineContentCopy, MdOutlineHttp } from "react-icons/md";
 import {
   TiSocialFacebook,
   TiSocialInstagram,
-  TiSocialLinkedin,
   TiSocialTwitter,
-  TiSocialYoutube,
 } from "react-icons/ti";
 
 function Form() {
@@ -128,11 +126,17 @@ function Form() {
                 placeholder="0x987987"
                 className={inputClasses}
               />
-              <MdOutlineContentCopy className={`${socialIconsClasses} cursor-pointer rounded-full p-1 hover:bg-gray-100 hover:text-gray-500`}/>
+              <MdOutlineContentCopy
+                className={`${socialIconsClasses} cursor-pointer rounded-full p-1 hover:bg-gray-100 hover:text-gray-500`}
+              />
             </div>
           </div>
           <div className="flex justify-center mb-28">
-            <Button btnText="Upload Profile" handleClick={() => {}} classStyle="self-center"/>
+            <Button
+              btnText="Upload Profile"
+              handleClick={() => {}}
+              classStyle="self-center"
+            />
           </div>
         </form>
       </div>

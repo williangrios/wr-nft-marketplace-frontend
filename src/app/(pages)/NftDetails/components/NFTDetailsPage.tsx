@@ -1,6 +1,5 @@
 import React from "react";
 import NFTDescription from "./NFTDescription";
-import NFTTabs from "./NFTTabs";
 import NFTDetailsImage from "./NFTDetailsImage";
 
 interface NFTDetailsPageProps {

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import webM3Modal from "web3Modal";
 import { ethers } from "ethers";
 import { WRNFTMarketPlaceABI, WRNFTMarketPlaceAddress } from "./constants";

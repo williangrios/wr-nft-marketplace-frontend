@@ -3,9 +3,7 @@ import { WRNFTMarketplaceContext } from "@/context/WRNFTMarketplaceContext";
 import React, { useContext, useEffect, useState } from "react";
 
 function Author() {
-  const { fetchMyNFTsOrListedNFTs, currentAccount } = useContext(
-    WRNFTMarketplaceContext
-  );
+  const { fetchMyNFTsOrListedNFTs } = useContext(WRNFTMarketplaceContext);
   const [nfts, setNfts] = useState<any[]>([]);
   const [myNfts, setMyNfts] = useState<any[]>([]);
 

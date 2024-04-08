@@ -1,10 +1,6 @@
 "use client";
 import React, { useEffect, useState, useContext } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import NFTDescription from "./components/NFTDescription";
-import NFTDetailsImage from "./components/NFTDetailsImage";
-import NFTTabs from "./components/NFTTabs";
-import Button from "@/components/Button/Button";
+import { useSearchParams } from "next/navigation";
 import Category from "@/components/Category/Category";
 import Brand from "@/components/Brand/Brand";
 import NFTDetailsPage from "./components/NFTDetailsPage";

@@ -1,11 +1,8 @@
 import React from "react";
-import image from "../../img/index";
-import { FaRegImage, FaUserAlt, FaUserEdit } from "react-icons/fa";
+import { FaRegImage, FaUserAlt } from "react-icons/fa";
 import { MdHelpCenter } from "react-icons/md";
-import { TbDownload, TbDownloadOff } from "react-icons/tb";
-import images from "../../img/index";
+import { TbDownload } from "react-icons/tb";
 import Link from "next/link";
-import Image from "next/image";
 
 interface ProfileProps {
   currentAccount: string;

@@ -10,7 +10,6 @@ import HeroSection from "@/components/HeroSection/HeroSection";
 import Loader from "@/components/Loader/Loader";
 import NFTCard from "@/components/NFTCard/NFTCard";
 import Service from "@/components/Service/Service";
-import Slider from "@/components/Slider/Slider";
 import Subscribe from "@/components/Subscribe/Subscribe";
 import Title from "@/components/Title/Title";
 import Video from "@/components/Video/Video";

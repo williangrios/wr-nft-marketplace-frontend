@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { BsImages } from "react-icons/bs";
 import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
-import images from "../../../../img/index";
 import Image from "next/image";
 
 interface NFTDetailsImageProps {

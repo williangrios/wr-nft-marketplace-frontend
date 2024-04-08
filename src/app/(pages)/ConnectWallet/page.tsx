@@ -4,7 +4,7 @@ import React, { useState, useEffect, useContext } from "react";
 import images from "../../../img/index";
 import { WRNFTMarketplaceContext } from "@/context/WRNFTMarketplaceContext";
 function ConnectWalletPage() {
-  const { currentAccount, connectWallet } = useContext(WRNFTMarketplaceContext);
+  const { connectWallet } = useContext(WRNFTMarketplaceContext);
   const [activeBtn, setActiveBtn] = useState(1);
   const providerArray = [
     {
