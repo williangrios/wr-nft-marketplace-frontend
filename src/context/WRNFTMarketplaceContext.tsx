@@ -13,24 +13,27 @@ const fetchContract = (signerOrProvider: any) =>
     signerOrProvider
   );
 
-const connectingWithSmartContract = async () => {
-  try {
-    const web3Modal = new webM3Modal();
-    const connection = await web3Modal.connect();
-    const provider = new ethers.BrowserProvider(connection);
-    const signer = await provider.getSigner();
-    const contract = fetchContract(signer);
-    return contract;
-  } catch (error) {
-    console.log("something went wrong", error);
-  }
-};
-
 export const WRNFTMarketplaceContext = React.createContext<any>(undefined);
 
 export const WRNFTMarketplaceProvider = ({ children }: any) => {
   const [currentAccount, setCurrentAccount] = useState("");
+  const [error, setError] = useState("");
+  const [openError, setOpenError] = useState(false);
   const router = useRouter();
+
+  const connectingWithSmartContract = async () => {
+    try {
+      const web3Modal = new webM3Modal();
+      const connection = await web3Modal.connect();
+      const provider = new ethers.BrowserProvider(connection);
+      const signer = await provider.getSigner();
+      const contract = fetchContract(signer);
+      return contract;
+    } catch (error) {
+      setOpenError(true);
+      setError("something went wrong");
+    }
+  };
 
   useEffect(() => {
     checkIfWalletIsConnected();
@@ -39,34 +42,40 @@ export const WRNFTMarketplaceProvider = ({ children }: any) => {
 
   const checkIfWalletIsConnected = async () => {
     try {
-      if (!window.ethereum) return console.log("Install Metamask");
+      if (!window.ethereum)
+        return setOpenError(true), setError("Install Metamask");
+
       const accounts = await window.ethereum.request({
         method: "eth_accounts",
       });
       if (accounts.length) {
         setCurrentAccount(accounts[0]);
       } else {
-        console.log("No account found");
+        setOpenError(true);
+        setError("No account found");
       }
     } catch (error) {
-      console.log("Something went wrong", error);
+      setOpenError(true);
+      setError("Something went wrong");
     }
   };
 
   const connectWallet = async () => {
     try {
-      if (!window.ethereum) return console.log("Install Metamask");
+      if (!window.ethereum)
+        return setOpenError(true), setError("Install Metamask");
       const accounts = await window.ethereum.request({
         method: "eth_requestAccounts",
       });
       setCurrentAccount(accounts[0]);
       // window.location.reload();
     } catch (error) {
-      console.log("Something went wrong", error);
+      setOpenError(true);
+      setError("Error whilte connecting to wallet");
     }
   };
 
-  const uploadToPinata = async (file) => {
+  const uploadToPinata = async (file: any) => {
     if (file) {
       try {
         const formData = new FormData();
@@ -85,7 +94,8 @@ export const WRNFTMarketplaceProvider = ({ children }: any) => {
         const ImgHash = `https://gateway.pinata.cloud/ipfs/${response.data.IpfsHash}`;
         return ImgHash;
       } catch (error) {
-        console.log("Unable to upload image to Pinata");
+        setOpenError(true);
+        setError("Unable to upload image to Pinata");
       }
     }
   };
@@ -99,7 +109,10 @@ export const WRNFTMarketplaceProvider = ({ children }: any) => {
     try {
       const price = ethers.parseUnits(formInputPrice, "ether");
       const contract = await connectingWithSmartContract();
-      if (!contract) return console.log("There is no contract to interacts");
+      if (!contract)
+        return (
+          setOpenError(true), setError("There is no contract to interacts")
+        );
       const listingPrice = await contract.getListingPrice();
       const transaction = !isReselling
         ? await contract.createToken(url, price, {
@@ -111,7 +124,8 @@ export const WRNFTMarketplaceProvider = ({ children }: any) => {
       await transaction.wait();
       // router.push("/SearchPage");
     } catch (error) {
-      console.log("Error while creating sale", error);
+      setOpenError(true);
+      setError("Error while creating sale");
     }
   };
 
@@ -123,8 +137,7 @@ export const WRNFTMarketplaceProvider = ({ children }: any) => {
     router: any
   ) => {
     if (!name || !description || !price || !image) {
-      alert("Data is missing");
-      return;
+      return setOpenError(true), setError("Data is missing");
     }
     const data = JSON.stringify({ name, description, image });
     try {
@@ -143,7 +156,8 @@ export const WRNFTMarketplaceProvider = ({ children }: any) => {
       await createSale(url, price, false, null);
       router.push("/SearchPage");
     } catch (error) {
-      console.log("Create NFT Error", error);
+      setOpenError(true);
+      setError("Create NFT error");
     }
   };
 
@@ -157,7 +171,17 @@ export const WRNFTMarketplaceProvider = ({ children }: any) => {
       const data = await contract.fetchMarketItem();
       const items = await Promise.all(
         data.map(
-          async ({ tokenId, seller, owner, price: unformattedPrice }) => {
+          async ({
+            tokenId,
+            seller,
+            owner,
+            price: unformattedPrice,
+          }: {
+            tokenId: any;
+            seller: any;
+            owner: any;
+            price: any;
+          }) => {
             const tokenURI = await contract.tokenURI(tokenId);
             const {
               data: { image, name, description },
@@ -181,7 +205,8 @@ export const WRNFTMarketplaceProvider = ({ children }: any) => {
       );
       return items;
     } catch (error) {
-      console.log("Error while fetching NFTs", error);
+      setOpenError(true);
+      setError("Error while fetching NFTs");
     }
   };
 
@@ -194,7 +219,17 @@ export const WRNFTMarketplaceProvider = ({ children }: any) => {
           : await contract!.fetchMyNFT();
       const items = await Promise.all(
         data.map(
-          async ({ tokenId, seller, owner, price: unformattedPrice }) => {
+          async ({
+            tokenId,
+            seller,
+            owner,
+            price: unformattedPrice,
+          }: {
+            tokenId: any;
+            seller: any;
+            owner: any;
+            price: any;
+          }) => {
             const tokenURI = await contract!.tokenURI(tokenId);
             const {
               data: { image, name, description },
@@ -218,7 +253,8 @@ export const WRNFTMarketplaceProvider = ({ children }: any) => {
       );
       return items;
     } catch (error) {
-      console.log("error while fetching listed NFTs");
+      setOpenError(true);
+      setError("Error while fetching listed NFTs");
     }
   };
 
@@ -236,7 +272,8 @@ export const WRNFTMarketplaceProvider = ({ children }: any) => {
       // // router.push('/author')
       router.push("/SearchPage");
     } catch (error) {
-      console.log("deu erro", error);
+      setOpenError(true);
+      setError("Error while buying NFT");
     }
   };
 
@@ -256,6 +293,10 @@ export const WRNFTMarketplaceProvider = ({ children }: any) => {
         createSale,
         uploadToPinata,
         currentAccount,
+        setOpenError,
+        openError,
+        setError,
+        error,
       }}
     >
       {children}

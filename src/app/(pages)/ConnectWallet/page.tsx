@@ -1,9 +1,10 @@
 "use client";
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import images from "../../../img/index";
-
+import { WRNFTMarketplaceContext } from "@/context/WRNFTMarketplaceContext";
 function ConnectWalletPage() {
+  const { currentAccount, connectWallet } = useContext(WRNFTMarketplaceContext);
   const [activeBtn, setActiveBtn] = useState(1);
   const providerArray = [
     {
@@ -27,9 +28,13 @@ function ConnectWalletPage() {
       <div className="flex w-full items-center justify-center gap-10">
         {providerArray.map((item, i) => (
           <div
-            className={`flex flex-col gap-8 p-8 justify-center items-center cursor-pointer ${activeBtn === i + 1 ? "bg-gray-200 rounded-xl shadow-right-bottom" : ""}`}
+            className={`flex flex-col gap-8 p-8 justify-center items-center cursor-pointer ${
+              activeBtn === i + 1
+                ? "bg-gray-200 rounded-xl shadow-right-bottom"
+                : ""
+            }`}
             key={i + 1}
-            onClick={() => setActiveBtn(i + 1)}
+            onClick={() => (setActiveBtn(i + 1), connectWallet())}
           >
             <Image
               src={item.provider}

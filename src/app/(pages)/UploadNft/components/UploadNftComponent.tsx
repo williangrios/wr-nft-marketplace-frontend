@@ -232,12 +232,12 @@ function UploadNftComponent({
                 price,
                 image,
                 description,
-                router,
-                website,
-                royalties,
-                fileSize,
-                category,
-                properties
+                router
+                // website,
+                // royalties,
+                // fileSize,
+                // category,
+                // properties
               )
             }
             classStyle=""

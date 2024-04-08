@@ -9,7 +9,11 @@ import Button from "../Button/Button";
 import Socials from "../Socials/Socials";
 import { WRNFTMarketplaceContext } from "@/context/WRNFTMarketplaceContext";
 
-function SideBar({ setOpenSideMenu }) {
+interface SideBarProps {
+  setOpenSideMenu: any;
+}
+
+function SideBar({ setOpenSideMenu }: SideBarProps) {
   const [openDiscover, setOpenDiscover] = useState(false);
   const [openHelp, setOpenHelp] = useState(false);
   const { currentAccount, connectWallet } = useContext(WRNFTMarketplaceContext);

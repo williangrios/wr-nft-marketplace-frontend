@@ -6,7 +6,7 @@ export const getTopCreators = (creators: any[]) => {
     );
     return index;
   }, {});
-  Object.entries(finalResults).forEach((item) => {
+  Object.entries(finalResults).forEach((item: any) => {
     const seller = item[0];
     const total = item[1]
       .map((newItem: any) => Number(newItem.price))

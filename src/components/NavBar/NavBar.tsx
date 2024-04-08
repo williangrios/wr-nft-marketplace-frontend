@@ -17,6 +17,7 @@ import {
   WRNFTMarketplaceProvider,
 } from "@/context/WRNFTMarketplaceContext";
 import { DiJqueryLogo } from "react-icons/di";
+import Error from "../Error/Error";
 
 function NavBar() {
   const [discover, setDiscover] = useState(false);
@@ -25,7 +26,9 @@ function NavBar() {
   const [profile, setProfile] = useState(false);
   const [openSideMenu, setOpenSideMenu] = useState(false);
   const router = useRouter();
-  const { currentAccount, connectWallet } = useContext(WRNFTMarketplaceContext);
+  const { currentAccount, connectWallet, openError, error } = useContext(
+    WRNFTMarketplaceContext
+  );
 
   const openProfile = () => {
     if (!profile) {
@@ -180,6 +183,7 @@ function NavBar() {
           <Sidebar setOpenSideMenu={setOpenSideMenu} />
         </div>
       )}
+      {openError && <Error />}
     </div>
   );
 }

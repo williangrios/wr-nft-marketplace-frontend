@@ -6,17 +6,17 @@ function Author() {
   const { fetchMyNFTsOrListedNFTs, currentAccount } = useContext(
     WRNFTMarketplaceContext
   );
-  const [nfts, setNfts] = useState([]);
-  const [myNfts, setMyNfts] = useState([]);
+  const [nfts, setNfts] = useState<any[]>([]);
+  const [myNfts, setMyNfts] = useState<any[]>([]);
 
   useEffect(() => {
-    fetchMyNFTsOrListedNFTs("fetchItemsListed").then((items) => {
+    fetchMyNFTsOrListedNFTs("fetchItemsListed").then((items: any[]) => {
       setNfts(items);
     });
   }, [fetchMyNFTsOrListedNFTs]);
 
   useEffect(() => {
-    fetchMyNFTsOrListedNFTs("fetchMyNFTs").then((items) => {
+    fetchMyNFTsOrListedNFTs("fetchMyNFTs").then((items: any[]) => {
       setMyNfts(items);
     });
   }, [fetchMyNFTsOrListedNFTs]);

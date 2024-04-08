@@ -1,13 +1,6 @@
 import Image from "next/image";
 import React from "react";
 import images from "../../img/index";
-import {
-  TiSocialFacebook,
-  TiSocialInstagram,
-  TiSocialLinkedin,
-  TiSocialTwitter,
-  TiSocialYoutube,
-} from "react-icons/ti";
 import Socials from "../Socials/Socials";
 import { RiSendPlaneFill } from "react-icons/ri";
 import HelpCenter from "../NavBar/HelpCenter";
