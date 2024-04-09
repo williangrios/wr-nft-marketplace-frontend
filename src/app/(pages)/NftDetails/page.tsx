@@ -52,7 +52,8 @@
 
 // export default NFTDetails;
 
-import React, { useEffect, useState, useContext, Suspense } from "react";
+"use client";
+import React, { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Category from "@/components/Category/Category";
 import Brand from "@/components/Brand/Brand";
