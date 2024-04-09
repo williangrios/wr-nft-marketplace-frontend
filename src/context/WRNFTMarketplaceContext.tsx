@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import webM3Modal from "web3Modal";
+import webM3Modal from "web3modal";
 import { ethers } from "ethers";
 import { WRNFTMarketPlaceABI, WRNFTMarketPlaceAddress } from "./constants";
 import { useRouter } from "next/navigation";
