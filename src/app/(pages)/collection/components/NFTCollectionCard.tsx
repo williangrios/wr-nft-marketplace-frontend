@@ -13,9 +13,6 @@ interface NFTCollectionCardProps {
 function NFTCollectionCard({ NFTData }: NFTCollectionCardProps) {
   const [like, setLike] = useState(false);
   const [likeInc, setLikeInc] = useState(21);
-
-  console.log("nftdata------", NFTData);
-
   const likeNFT = () => {
     if (!like) {
       setLike(true);
@@ -31,7 +28,7 @@ function NFTCollectionCard({ NFTData }: NFTCollectionCardProps) {
         <Link
           href={{
             pathname: "/NftDetails",
-            query: { ...item, tokenId: item.tokenId.toString() },
+            query: { ...item, tokenId: item?.tokenId?.toString() },
             // query: { ...item, tokenId: 1 },
           }}
           key={i + 1}
